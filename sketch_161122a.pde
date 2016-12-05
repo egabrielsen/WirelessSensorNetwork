@@ -11,12 +11,14 @@
 
 import java.util.Arrays;
 import java.util.*;
+import java.io.File;
+import java.text.NumberFormat;
 
 final static color BG = -1, FG = 5;
 final static short DOT_DIST  =50, DOT_OPAC = 60;
 final static float DOT_SPEED = 0, FPS = 60, BOLD = 1;
 
-static int NUM_DOTS  = 4000;
+static int NUM_DOTS  = 64000;
 
 final static String GFX = P2D;  
 
@@ -68,6 +70,18 @@ void setup() {
   
   setupNodes();
   
+  Runtime runtime = Runtime.getRuntime();
+ 
+  NumberFormat format = NumberFormat.getInstance();
+ 
+  long maxMemory = runtime.maxMemory();
+  long allocatedMemory = runtime.totalMemory();
+  long freeMemory = runtime.freeMemory();
+   
+  println("free memory: " + format.format(freeMemory / 1024) );
+  println("allocated memory: " + format.format(allocatedMemory / 1024) );
+  println("max memory: " + format.format(maxMemory / 1024) );
+  println("total free memory: " + format.format((freeMemory + (maxMemory - allocatedMemory)) / 1024) );
 
 }
 
@@ -275,6 +289,19 @@ void draw() {
       maxPoint = sorted.get(sorted.size() - 1);
       minPoint = sorted.get(0);
       sortAdjacency = false;
+      
+      Runtime runtime = Runtime.getRuntime();
+ 
+      NumberFormat format = NumberFormat.getInstance();
+     
+      long maxMemory = runtime.maxMemory();
+      long allocatedMemory = runtime.totalMemory();
+      long freeMemory = runtime.freeMemory();
+       
+      println("free memory: " + format.format(freeMemory / 1024) );
+      println("allocated memory: " + format.format(allocatedMemory / 1024) );
+      println("max memory: " + format.format(maxMemory / 1024) );
+      println("total free memory: " + format.format((freeMemory + (maxMemory - allocatedMemory)) / 1024) );
     }
     
     if (discovered && backbone == 0) {
