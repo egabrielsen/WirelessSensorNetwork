@@ -18,7 +18,7 @@ final static color BG = -1, FG = 5;
 final static short DOT_DIST  =50, DOT_OPAC = 60;
 final static float DOT_SPEED = 0, FPS = 60, BOLD = 1;
 
-static int NUM_DOTS  = 64000;
+static int NUM_DOTS  = 4000;
 
 final static String GFX = P2D;  
 
